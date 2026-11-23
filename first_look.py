@@ -25,6 +25,12 @@ port_stats = df.groupby("port")["cost"].agg(["sum", "mean", "count", "max", "min
 # print(port_stats)
 
 # Step 30: ports with average cost above 12,000
-expensive = port_stats[(port_stats["mean"] > 12000) & (port_stats["count"]>=3)]
-print(expensive)
+# expensive = port_stats[(port_stats["mean"] > 12000) & (port_stats["count"]>=3)]
+# print(expensive)
 # Step 31: Your turn to write it shows only the ports with more than 1 call.
+# Step 33: monthly cost per port, like an Excel pivot
+# pivot = df.pivot_table(index="port", columns="month", values="cost", aggfunc="sum", fill_value=0)
+# print(pivot)
+
+vessel_spend = df.groupby("vessel")["cost"].sum(). sort_values(ascending=False)
+print(vessel_spend)
